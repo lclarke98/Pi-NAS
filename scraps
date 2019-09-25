@@ -1,0 +1,19 @@
+function listFolders()
+{
+    // get the base directory
+   // $base_dir = dir("/Volumes/Leo") or die("Failed opening the directory for reading");
+
+    $base_dir = "/Volumes/Leo";
+    return glob($base_dir.'date_*', GLOB_ONLYDIR);
+}
+
+
+
+$dirs = glob("/Volumes/Leo", GLOB_ONLYDIR);
+ 
+echo '<ul>';
+foreach($dirs as $dir)
+{
+    echo '<li><a href="?d='.$dir.'">'.$dir.'</a></li>';
+}
+echo '</ul>';
