@@ -10,5 +10,5 @@ sudo apt-get install samba samba-common-bin -y
 sudo chmod a+rw /var/www
 
 # Adding api to webserver folder
-cd /var/www
+cd /var/www/html
 git clone https://github.com/lclarke98/Pi-NAS
