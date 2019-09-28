@@ -7,4 +7,3 @@ $_SESSION["path"] = $path;
 echo $_SESSION["path"];
 
 header("location: dashboard.php");
-?>
