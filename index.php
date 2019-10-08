@@ -6,9 +6,10 @@
 </head>
 
 <body>
+<h1>Welcome</h1>
    <?php
    //Get a list of file paths using the glob function.
-   $fileList = glob("C:\Users\Leo\Desktop\pi\*");
+   $fileList = glob('/Applications/XAMPP/xamppfiles/htdocs/Pi-NAS/nas/*');
    //Loop through the array that glob returned.
    foreach ($fileList as $filename) {
       ?>
