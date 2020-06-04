@@ -13,8 +13,9 @@ session_start();
 <h1> <?php echo $_SESSION["path"];?> </h1>
 <ul>
 <li><a href="file-manager.php">File Manager</a>
-<li><a href="drive-settings.php">Settings</a>
-<li><a href="index.php">Back To Main Menu</a>
+<li><a href="drive-settings.php">Drive settings</a>
+<li><a href="user-management.php">User Management</a>
+<li><a href="logout.php">Logout</a>
 </ul>
 
 </body>
