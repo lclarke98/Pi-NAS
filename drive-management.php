@@ -16,15 +16,15 @@ require_once "config.php";
     <div id="main-content">
         <header>
             <nav>
-                <button id="open-adduser-modal">Add New user</button>
+                <button><a href="new-drive-selector.php">Add new Drive</a></button>
             </nav>
         </header>
 
 
 
-        <h1>User Management</h1>
+        <h1>Drive Management</h1>
         <?php
-        $sql = "SELECT * FROM user";
+        $sql = "SELECT * FROM addedDrive";
         $userList = $link->query($sql);
 
         if ($userList->num_rows > 0) {
@@ -32,8 +32,8 @@ require_once "config.php";
                 while ($row = $userList->fetch_assoc()) {
                 ?>
                     <li>
-                        <a href="user-profile.php?user_name=<?php echo $row['user_name']; ?> & user_id=<?php echo $row['user_id']; ?>">
-                            <?php echo $row['user_name']; ?>
+                        <a href="drive-profile.php?drive_name=<?php echo $row['addedDrive_name']; ?> & drive_id=<?php echo $row['addedDrive_id']; ?>">
+                            <?php echo $row['addedDrive_name']; ?>
                         </a>
                     </li>
                 <?php
@@ -41,23 +41,18 @@ require_once "config.php";
                 ?></ul><?php
                     } else {
                         ?>
-            <p class="text-center">No users to manage</p>
+            <p class="text-center">No drives to manage go to the add drive page to add an new drive</p>
         <?php
                     }
         ?>
     </div>
     <div id="adduser-modal">
         <button id="close-adduser-modal">Close</button>
-        <form action="/db-functions/add-user.php" method="post">
+        <form action="/db-functions/add-drive.php" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <p1>Enter a username</p1>
+                <p1>Give your new drive a name</p1>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
-            </div>
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <p1>Enter a password</p1>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group" id="center_buttons">
                 <input type="submit" class="btn btn-primary" value="Add user">

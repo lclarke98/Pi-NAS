@@ -16,34 +16,21 @@ require_once "config.php";
     <div id="main-content">
         <header>
             <nav>
-                <button id="open-adduser-modal">Add New user</button>
+                <h1>Add new drive</h1>
             </nav>
         </header>
 
 
 
-        <h1>User Management</h1>
+        <h1>New Drives to add:</h1>
         <?php
-        $sql = "SELECT * FROM user";
-        $userList = $link->query($sql);
+        $dirs = glob("/media/*", GLOB_ONLYDIR);
 
-        if ($userList->num_rows > 0) {
-        ?><ul><?php
-                while ($row = $userList->fetch_assoc()) {
-                ?>
-                    <li>
-                        <a href="user-profile.php?user_name=<?php echo $row['user_name']; ?> & user_id=<?php echo $row['user_id']; ?>">
-                            <?php echo $row['user_name']; ?>
-                        </a>
-                    </li>
-                <?php
-                }
-                ?></ul><?php
-                    } else {
-                        ?>
-            <p class="text-center">No users to manage</p>
-        <?php
-                    }
+        echo '<ul>';
+        foreach ($dirs as $dir) {
+            echo '<li><a href="drive-setup.php?path=' . $dir . '">' . $dir . '</a></li>';
+        }
+        echo '</ul>';
         ?>
     </div>
     <div id="adduser-modal">

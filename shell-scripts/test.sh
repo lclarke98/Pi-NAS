@@ -1,3 +1,1 @@
-
-    echo " $1"
-    echo " $2"
+sudo mkdir /home/pi/test
