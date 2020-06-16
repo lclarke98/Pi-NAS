@@ -15,6 +15,6 @@ session_start();
   }
   mysqli_close($link);
 
-  shell_exec('/var/www/html/shell-scripts/add-drive.sh');
+  shell_exec('/var/www/html/shell-scripts/add-drive.sh'); // workout why this wont work + run a test script created on pi
 
 ?>
