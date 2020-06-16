@@ -6,7 +6,7 @@ session_start();
 
   $sql = "INSERT INTO drive (drive_name, drive_path) VALUES (?, ?)";
   $stmt = $link->prepare($sql);
-  $stmt->bind_param('ss', $_POST['username'], $hashedPassword);
+  $stmt->bind_param('ss', $_POST['drive-name'], $newPath);
 
   if ($stmt->execute()) {
     header("location: ../user-management.php");
