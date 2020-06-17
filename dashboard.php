@@ -10,7 +10,7 @@ session_start();
 </head>
 
 <body>
-    <h1> <?php echo $_SESSION["path"]; ?> </h1>
+    <h1> <?php echo $_SESSION["username"]; ?> </h1>
     <ul>
         <li><a href="file-manager.php">File Manager</a>
         <li><a href="drive-management.php">Drive Management</a>
