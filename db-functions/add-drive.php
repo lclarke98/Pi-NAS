@@ -2,7 +2,7 @@
 session_start();
   require_once "/var/www/html/config.php";
   
-  $newPath = "/home/pi/nas-mount/" + $_POST["drive-name"];
+  $newPath = "/home/pi/nas-mount/" . $_POST["drive-name"];
 
   $sql = "INSERT INTO drive (drive_name, drive_path) VALUES (?, ?)";
   $stmt = $link->prepare($sql);
@@ -15,6 +15,6 @@ session_start();
   }
   mysqli_close($link);
 
-  shell_exec('/var/www/html/shell-scripts/add-drive.sh'); // workout why this wont work + run a test script created on pi
+  shell_exec('/var/www/html/test.sh'); // workout why this wont work + run a test script created on pi
 
 ?>

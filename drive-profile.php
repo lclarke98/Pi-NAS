@@ -16,18 +16,17 @@ require_once "config.php";
     <div id="main-content">
         <header>
             <nav>
-                <button><a href="new-drive-selector.php">Add new Drive</a></button>
+                <h1> <?php echo $_GET["drive_name"] ?> </h1>
             </nav>
         </header>
 
-
-
-        <h1>Drive Management</h1>
+        <div id="permission-table">
         <?php
-        $sql = "SELECT * FROM drive";
-        $userList = $link->query($sql);
+        $drive = $_GET["drive-name"];
+        $sql = "SELECT * FROM permission WHERE drive_name = $drive";
+        $permissionList = $link->query($sql);
 
-        if ($userList->num_rows > 0) {
+        if ($permissionList->num_rows > 0) {
         ?><ul><?php
                 while ($row = $userList->fetch_assoc()) {
                 ?>
@@ -45,21 +44,8 @@ require_once "config.php";
         <?php
                     }
         ?>
-    </div>
-    <div id="adduser-modal">
-        <button id="close-adduser-modal">Close</button>
-        <form action="/db-functions/add-drive.php" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <p1>Give your new drive a name</p1>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>
-            <div class="form-group" id="center_buttons">
-                <input type="submit" class="btn btn-primary" value="Add user">
-            </div>
-        </form>
-    </div>
-    <div id="overlay"></div>
+        </div>
+
 </body>
 
 </html>
