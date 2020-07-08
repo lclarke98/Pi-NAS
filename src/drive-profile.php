@@ -21,31 +21,42 @@ require_once "config.php";
         </header>
 
         <div id="permission-table">
-        <?php
-        $drive = $_GET["drive-name"];
-        $sql = "SELECT * FROM permission WHERE drive_name = $drive";
-        $permissionList = $link->query($sql);
+            <?php
+            $drive = $_GET["drive-name"];
+            $sql = "SELECT * FROM permission WHERE drive_name = $drive";
+            $permissionList = $link->query($sql);
 
-        if ($permissionList->num_rows > 0) {
-        ?><ul><?php
+            if ($permissionList->num_rows > 0) {
+            ?><ul><?php
                 while ($row = $userList->fetch_assoc()) {
                 ?>
-                    <li>
-                        <a href="drive-profile.php?drive_name=<?php echo $row['drive_name']; ?> & drive_id=<?php echo $row['drive_id']; ?>">
-                            <?php echo $row['drive_name']; ?>
-                        </a>
-                    </li>
-                <?php
+                        <li>
+                            <label> <?php echo $row["user_name"] ?> </label>
+                            <input type="checkbox" name=<?php echo $row["read_value"] ?> checked=<?php getValue($row["read_value"]) ?>>
+                            <input type="checkbox" name=<?php echo $row["write_value"]?> checked=<?php getValue($row["write_value"]) ?>>
+                        </li>
+                    <?php
                 }
-                ?></ul><?php
+                    ?></ul><?php
                     } else {
                         ?>
-            <p class="text-center">No drives to manage go to the add drive page to add an new drive</p>
-        <?php
+                <p class="text-center">Error please go back to the dashboard</p>
+            <?php
                     }
-        ?>
+            ?>
         </div>
 
 </body>
 
 </html>
+
+<?php
+function getValue($value)
+{
+    if ($value == true) {
+        echo "checked";
+    } else {
+        echo "false";
+    }
+}
+?>
