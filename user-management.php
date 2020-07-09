@@ -32,7 +32,7 @@ require_once "config.php";
                 while ($row = $userList->fetch_assoc()) {
                 ?>
                     <li>
-                        <a href="user-profile.php?user_name=<?php echo $row['user_name']; ?> & user_id=<?php echo $row['user_id']; ?>">
+                        <a href="user-profile.php?user_name=<?php echo $row['user_name']; ?>">
                             <?php echo $row['user_name']; ?>
                         </a>
                     </li>
@@ -48,16 +48,14 @@ require_once "config.php";
     </div>
     <div id="adduser-modal">
         <button id="close-adduser-modal">Close</button>
-        <form action="/db-functions/add-user.php" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+        <form action="./db-functions/add-user.php" method="post">
+            <div class="form-group">
                 <p1>Enter a username</p1>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
+                <input type="text" name="username" class="form-control">
             </div>
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+            <div class="form-group">
                 <p1>Enter a password</p1>
                 <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group" id="center_buttons">
                 <input type="submit" class="btn btn-primary" value="Add user">

@@ -22,18 +22,18 @@ require_once "config.php";
 
         <div id="permission-table">
             <?php
-            $drive = $_GET["drive-name"];
+            $drive = "'" . $_GET["drive_name"] . "'";
             $sql = "SELECT * FROM permission WHERE drive_name = $drive";
             $permissionList = $link->query($sql);
-
+            echo $sql;
             if ($permissionList->num_rows > 0) {
             ?><ul><?php
-                while ($row = $userList->fetch_assoc()) {
+                while ($row = $permissionList->fetch_assoc()) {
                 ?>
                         <li>
                             <label> <?php echo $row["user_name"] ?> </label>
-                            <input type="checkbox" name=<?php echo $row["read_value"] ?> checked=<?php getValue($row["read_value"]) ?>>
-                            <input type="checkbox" name=<?php echo $row["write_value"]?> checked=<?php getValue($row["write_value"]) ?>>
+                            <input type="checkbox" name=<?php echo $row["user_name"] . "_read" ?> <?php echo ($row['permission_read']==1 ? 'checked' : '') ?>>
+                            <input type="checkbox" name=<?php echo $row["user_name"] . "_write"?> <?php echo ($row['permission_write']==1 ? 'checked' : '') ?>>
                         </li>
                     <?php
                 }
@@ -49,14 +49,3 @@ require_once "config.php";
 </body>
 
 </html>
-
-<?php
-function getValue($value)
-{
-    if ($value == true) {
-        echo "checked";
-    } else {
-        echo "false";
-    }
-}
-?>

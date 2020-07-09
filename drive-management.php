@@ -32,7 +32,7 @@ require_once "config.php";
                 while ($row = $userList->fetch_assoc()) {
                 ?>
                     <li>
-                        <a href="drive-profile.php?drive_name=<?php echo $row['drive_name']; ?> & drive_id=<?php echo $row['drive_id']; ?>">
+                        <a href="drive-profile.php?drive_name=<?php echo $row['drive_name']; ?>">
                             <?php echo $row['drive_name']; ?>
                         </a>
                     </li>

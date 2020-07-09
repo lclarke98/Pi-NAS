@@ -12,7 +12,7 @@ CREATE TABLE if not exists nas.drive(
   drive_path VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE if not exists nas.permissions(
+CREATE TABLE if not exists nas.permission(
   permission_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   drive_name VARCHAR(64) NOT NULL,
   user_name VARCHAR(64) NOT NULL,
@@ -28,4 +28,4 @@ insert into user (user_name, user_password) values ('admin', '$2y$10$/MNTjR7eFTI
 
 insert into drive (drive_name, drive_path) values ('nas1', '/nas-mounts/nas1');
 
-insert into permissions (drive_name, user_name, permission_read, permission_write) values ('nas1', 'admin', 1, 1);
+insert into permission (drive_name, user_name, permission_read, permission_write) values ('nas1', 'admin', 1, 1);
