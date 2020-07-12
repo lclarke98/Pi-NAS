@@ -57,6 +57,31 @@ require_once "config.php";
                 <p1>Enter a password</p1>
                 <input type="password" name="password" class="form-control">
             </div>
+            <div class="form-group">
+                <?php
+                $sql = "SELECT * FROM drive";
+                $permissionList = $link->query($sql);
+                echo $sql;
+                if ($permissionList->num_rows > 0) {
+                ?><ul><?php
+                        while ($row = $permissionList->fetch_assoc()) {
+                        ?>
+                            <li>
+                                <label> <?php echo $row["drive_name"] ?> </label>
+                                <input type="checkbox" name=<?php echo $row["drive_name"] . "_read" ?>>
+                                <input type="checkbox" name=<?php echo $row["drive_name"] . "_write" ?>>
+                            </li>
+                        <?php
+                        }
+                        ?></ul><?php
+                            } else {
+                                ?>
+                    <p class="text-center">Error please go back to the dashboard</p>
+                <?php
+                            }
+                ?>
+            </div>
+
             <div class="form-group" id="center_buttons">
                 <input type="submit" class="btn btn-primary" value="Add user">
             </div>
