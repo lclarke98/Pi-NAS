@@ -68,8 +68,8 @@ require_once "config.php";
                         ?>
                             <li>
                                 <label> <?php echo $row["drive_name"] ?> </label>
-                                <input type="checkbox" name=<?php echo $row["drive_name"] . "_read" ?>>
-                                <input type="checkbox" name=<?php echo $row["drive_name"] . "_write" ?>>
+                                <input type="checkbox" value = 1 name=<?php echo $row["drive_name"] . "_read" ?>>
+                                <input type="checkbox" value = 1 name=<?php echo $row["drive_name"] . "_write" ?>>
                             </li>
                         <?php
                         }
