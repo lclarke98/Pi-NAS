@@ -8,7 +8,6 @@ $drives = $stmtDrives->num_rows;
 
 $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-
 $sql = "INSERT INTO user (user_name, user_password) VALUES (?, ?)";
 $stmt = $link->prepare($sql);
 $stmt->bind_param('ss', $_POST['username'], $hashedPassword);
@@ -17,9 +16,7 @@ if ($stmt->execute()) {
   // add permissions here
   // sort permission
   foreach ($stmtDrives as $drive) {
-    //$read =  $_POST[$drive["drive_name"] . "_read"];
     $read = is_null($_POST[$drive["drive_name"] . "_read"]  ) ? false : true;
-    //$write = $_POST[$drive["drive_name"] . "_write"];
     $write = is_null($_POST[$drive["drive_name"] . "_write"]  ) ? false : true;
 
     $sql = "INSERT INTO permission (drive_name, user_name, permission_read, permission_write) VALUES (?, ?, ?, ?)";
@@ -37,3 +34,4 @@ if ($stmt->execute()) {
 }
 mysqli_close($link);
 
+?>
