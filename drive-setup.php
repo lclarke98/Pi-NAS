@@ -29,6 +29,35 @@ require_once "config.php";
                 <input type="hidden" name="path" value="<?php echo $_GET['path']; ?>">
                 <input type="text" name="drive-name" class="form-control" value="<?php echo $drive_name; ?>">
                 <span class="help-block"><?php echo $drive_name_err; ?></span>
+
+                //permissions here
+                <h2> Please assign users read and write permissions</h2>
+
+                <div class="form-group">
+                <?php
+                $sql = "SELECT * FROM user";
+                $permissionList = $link->query($sql);
+                echo $sql;
+                if ($permissionList->num_rows > 0) {
+                ?><ul><?php
+                        while ($row = $permissionList->fetch_assoc()) {
+                        ?>
+                            <li>
+                                <label> <?php echo $row["user_name"] ?> </label>
+                                <input type="checkbox" value = 1 name=<?php echo $row["user_name"] . "_read" ?>>
+                                <input type="checkbox" value = 1 name=<?php echo $row["user_name"] . "_write" ?>>
+                            </li>
+                        <?php
+                        }
+                        ?></ul><?php
+                            } else {
+                                ?>
+                    <p class="text-center">Error please go back to the dashboard</p>
+                <?php
+                            }
+                ?>
+            </div>
+
             </div>
             <div class="form-group" id="center_buttons">
                 <input type="submit" class="btn btn-primary" value="Add Drive">
