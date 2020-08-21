@@ -22,6 +22,7 @@ if ($stmt->execute()) {
     $sql = "INSERT INTO permission (drive_name, user_name, permission_read, permission_write) VALUES (?, ?, ?, ?)";
     $stmt = $link->prepare($sql);
     $stmt->bind_param('ssii', $drive["drive_name"], $_POST['username'], $read, $write);
+    $stmt->execute();
   }
   if($stmt->execute()){
     //shell_exec('/var/www/html/shell-scripts/test.sh');
@@ -29,9 +30,7 @@ if ($stmt->execute()) {
   }else{
     echo "Error: " . $link->error;
   }
-} else {
-  echo "Error: " . $link->error;
-}
+} 
 mysqli_close($link);
 
 ?>

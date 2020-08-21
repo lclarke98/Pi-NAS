@@ -23,7 +23,7 @@ require_once "config.php";
 
 
         <h1>Setup <?php echo $_GET['path']; ?> </h1>
-        <form action="/db-functions/add-drive.php" method="post">
+        <form action="./db-functions/add-drive.php" method="post">
             <div class="form-group <?php echo (!empty($drive_name_err)) ? 'has-error' : ''; ?>">
                 <p1>Give your new drive a name</p1>
                 <input type="hidden" name="path" value="<?php echo $_GET['path']; ?>">

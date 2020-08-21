@@ -25,7 +25,7 @@ require_once "config.php";
         <h1>New Drives to add:</h1>
         <?php
         //$dirs = glob("/media/*", GLOB_ONLYDIR);
-        $dirs = glob(". /media/*");
+        $dirs = glob("./media/*");
 
         echo '<ul>';
         foreach ($dirs as $dir) {
